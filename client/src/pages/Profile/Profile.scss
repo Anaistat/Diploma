@@ -1,0 +1,50 @@
+.profile{
+  background-image: url("profile.svg");
+  background-color: #F0EFF4;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .user{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    padding-top: 220px;
+
+    &__photo{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    &__name{
+      font-weight: 300;
+      font-size: 36px;
+    }
+  }
+
+  .user-reviews{
+    width: 80%;
+    margin-top: 30px;
+
+    &__title{
+      font-weight: 300;
+      font-size: 36px;
+    }
+
+    &__reviews{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  &__load-more{
+    text-decoration: underline;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}

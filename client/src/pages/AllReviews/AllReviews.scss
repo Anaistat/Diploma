@@ -1,0 +1,16 @@
+.all-reviews{
+
+  background-image: url("../bg.svg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  display: flex;
+  justify-content: center;
+  padding-top: 170px;
+
+  &__container{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

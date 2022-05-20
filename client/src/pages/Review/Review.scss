@@ -1,0 +1,101 @@
+.review{
+  background-image: url("../bg.svg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  padding-top: 60px;
+
+  .bg-overlay{
+    height: 620px;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 50%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #FFFFFF;
+    padding: 0 0 50px 50px;
+
+    .tag{
+      margin-right: 15px;
+    }
+
+    &__date, &__tags{
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    &__review-name{
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+  }
+
+
+  &__type{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title{
+    font-size: 30px;
+    color: #ffffff;
+    margin-right: 10px;
+    font-weight: 400;
+  }
+
+  .review-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+
+    &__text{
+      width: 70%;
+      text-align: justify;
+      font-size: 20px;
+    }
+
+    &__author-likes{
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+    }
+  }
+
+  .author, .likes{
+
+    display: flex;
+    align-items: center;
+
+    &__photo{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    &__heart{
+      margin-left: 10px;
+    }
+  }
+
+  .may-like{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__title{
+      width: 70%;
+      font-size: 32px;
+      font-weight: 300;
+      padding: 50px 0;
+    }
+  }
+
+}

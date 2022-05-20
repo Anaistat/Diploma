@@ -1,0 +1,53 @@
+.introduction{
+  font-family: 'Roboto', sans-serif;
+  background-color: #F0EFF4;
+  width: 100vw;
+  height: calc(100vh - 130px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 130px;
+
+  &__image{
+    width: 800px;
+    height: 540px;
+    background-image: url("https://res.cloudinary.com/dighqotqh/image/upload/v1651150534/reccom/intro_otgalp.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .explore{
+    width: 360px;
+
+    &__title{
+      font-weight: 100;
+      font-size: 46px;
+    }
+
+    &__text{
+      font-weight: lighter;
+      text-align: justify;
+      letter-spacing: 1px;
+      line-height: 22px;
+    }
+
+    &__start{
+      width: 200px;
+      height: 42px;
+      border-radius: 10px;
+      border: none;
+      background-color: #F7B801;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: lighter;
+      transition: box-shadow .15s ease-out;
+      margin-top: 15px;
+
+      &:hover{
+        box-shadow: 0px 0px 7px 3px rgba(170, 128, 249, 0.2);
+        transition: box-shadow .15s ease-out;
+      }
+    }
+  }
+}

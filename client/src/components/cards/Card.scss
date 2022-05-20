@@ -1,0 +1,92 @@
+.link:hover{
+  color: #000000;
+}
+
+.card-scaled{
+  &:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+  }
+}
+
+.top-ranked-card{
+  transform: scale(1.2);
+}
+
+.review-card{
+  display: flex;
+  width: 500px;
+  height: 260px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+
+  &:hover{
+    filter: saturate(1.6);
+    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+  }
+
+  &__type{
+   height: 100%;
+   border-radius: 10px 0 0 10px;
+   width: 25px;
+   background-size: cover;
+   background-repeat: no-repeat;
+  }
+
+  .info{
+    width: 52%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-image: url("../../../public/card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &__product-name{
+      font-size: 40px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    &__review-name{
+      width: 70%;
+      line-height: 24px;
+    }
+
+    &__rating{
+      position: absolute;
+      bottom: 10px;
+    }
+  }
+
+  .likes-comments{
+    width: calc(475px - 52%);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 10px;
+
+    .card-right{
+      width: 50px;
+      height: 30px;
+      background-color: #ffffff;
+      margin-right: 10px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__comment, &__like{
+        margin-left: 5px;
+      }
+    }
+  }
+}
