@@ -9,7 +9,6 @@ import Authentication from "../../services/Authentication";
 import {Candidate, Role, User} from "../../types";
 import AuthController from "../../controllers/AuthController";
 import {googleProvider} from "../../configs/social";
-import language from "../../utilities/language";
 import LogoutIcon from '@mui/icons-material/Logout';
 
 
@@ -17,8 +16,6 @@ const Header = () => {
 
     const dispatch = useDispatch()
     const currentUser:any = useSelector<any>(state=>state.user.user)
-    const lang:any = useSelector<any>(state=>state.language.language)
-
     const [authUser] = useAuthState(auth)
     let navigate = useNavigate()
 
@@ -53,7 +50,6 @@ const Header = () => {
 
     return (
         <header className="header">
-
                 <Link to="/main" className="link">
                     <div className="logo">
                     <img src="https://res.cloudinary.com/dighqotqh/image/upload/v1653035782/reccom/logo_ctrt9p.png" alt="logo" className="logo__img"/>
@@ -68,7 +64,7 @@ const Header = () => {
                     authUser && currentUser?
                         <div className="settings-login">
                             <Settings userName={currentUser.name} userPhoto={currentUser.photo} role={currentUser.role}/>
-                            <LogoutIcon className='settings-login__logout' onClick={()=>logout()}/>
+                            <LogoutIcon className='settings-login__logout' style={{color: '#a11414'}} onClick={()=>logout()}/>
                         </div>
                         :
                         <div className="settings-login">

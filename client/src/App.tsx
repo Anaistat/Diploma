@@ -15,8 +15,14 @@ import {auth} from "./configs/firebase";
 import {Candidate} from "./types";
 import AuthController from "./controllers/AuthController";
 import AllReviews from "./pages/AllReviews/AllReviews";
+import Preloader from "./components/preloader/preloader";
 
 function App() {
+
+    const [authUser, loading, error] = useAuthState(auth)
+    const dispatch = useDispatch()
+    localStorage.language?dispatch({type: `${localStorage.language.toUpperCase()}_LANGUAGE`}):dispatch({type: "EN"})
+
     const theme = createTheme({
         palette: {
             primary: {
@@ -40,12 +46,6 @@ function App() {
         },
     });
 
-
-    const dispatch = useDispatch()
-    localStorage.language?dispatch({type: `${localStorage.language.toUpperCase()}_LANGUAGE`}):dispatch({type: "EN"})
-
-    const [authUser, loading, error] = useAuthState(auth)
-
     useEffect(()=>{
         if(!authUser) return
         const candidate:Candidate = {
@@ -61,19 +61,32 @@ function App() {
   return (
       <ThemeProvider theme={theme}>
         <div className="App">
-            <Header/>
-           <Routes>
-               <Route path='/'>
-                   <Route index element={<Introduction/>}/>
-                   <Route path="/main" element={<Main/>}/>
-                   <Route path="review/:id" element={<Review/>}/>
-                   <Route path="/new" element={<NewReview/>}/>
-                   <Route path="/profile" element={<Profile/>}/>
-                   <Route path="/admin" element={<Admin/>}/>
-                   <Route path="/new/:id" element={<NewReview edit={true}/>}/>
-                   <Route path="/all-reviews/:product" element={<AllReviews/>}/>
-               </Route>
-           </Routes>
+
+            {
+                loading?
+                    <Preloader/>
+                :
+                    error?
+                        <p>{error.message}</p>
+                :
+                <>
+                    <Header/>
+                    <Routes>
+                        <Route path='/'>
+                            <Route index element={<Introduction/>}/>
+                            <Route path="/main" element={<Main/>}/>
+                            <Route path="review/:id" element={<Review/>}/>
+                            <Route path="/new" element={<NewReview/>}/>
+                            <Route path="/profile" element={<Profile/>}/>
+                            <Route path="/admin" element={<Admin/>}/>
+                            <Route path="/edit/:id" element={<NewReview edit={true}/>}/>
+                            <Route path="/all-reviews/:product" element={<AllReviews/>}/>
+                        </Route>
+                    </Routes>
+                </>
+            }
+
+
         </div>
       </ThemeProvider>
   );

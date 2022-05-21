@@ -70,13 +70,14 @@ const NewReview:FC<NewReviewProps> = (edit) => {
                 setScore(res.score)
                 setText(res.text)
                 dispatch({type: 'CHOSEN_PRODUCT', payload: res.product})
-                setReviewId(res.id)
+                setReviewId(Number(res.id))
                 setTags(res.tags)
                 setDate(res.date.toString())
                 setReviewName(res.title)
             }).catch(console.warn)
         }
     }, [currentUser])
+
 
     const editReview = async () => {
         if(images && text && reviewName && chosenProduct && currentUser){
@@ -135,7 +136,7 @@ const NewReview:FC<NewReviewProps> = (edit) => {
 
                     <div className="rating">
                         {
-                            Array(5).fill(0).map( (star, index) => <div key={"star"+index} onClick={()=>setScore(index + 1)}><Star isFilled={score > index} width={30} height={30} stroke={'#000000'}/></div>)
+                            Array(5).fill(0).map( (star, index) => <div key={"star"+index} onClick={()=>setScore(index + 1)}><Star isFilled={score > index} width={30} height={30} stroke={'#927c00'}/></div>)
                         }
                     </div>
 
@@ -151,9 +152,9 @@ const NewReview:FC<NewReviewProps> = (edit) => {
                 </Paper>
                 {
                     edit?
-                        <Button variant="contained" type="button" onClick={editReview}>Save changes</Button>
+                        <Button variant="contained" type="button" className='publish-button' onClick={editReview}>Save changes</Button>
                         :
-                        <Button variant="contained" type="button" onClick={createReview}>Create review</Button>
+                        <Button variant="contained" type="button" className='publish-button' onClick={createReview}>Create review</Button>
                 }
             </form>
         </div>

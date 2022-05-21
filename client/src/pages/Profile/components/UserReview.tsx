@@ -38,20 +38,20 @@ const UserReview:FC<UserReviewProps> = ({review, callback}) => {
                     backgroundRepeat: 'no-repeat'
                 } }/>
                 <div className="info" style={ {
-                    backgroundImage: "url(card.png)"
+                    backgroundImage: "url('https://res.cloudinary.com/dighqotqh/image/upload/v1653121754/reccom/card_srkout.png')"
                 } }>
                     <h2 className="info__product-name">{review.product.title}</h2>
                     <p className="info__review-name">{review.title}</p>
                     <div className="info__rating"><Stars score={review.score} width={20} height={20}/></div>
                 </div>
                 <div className="likes-comments">
-                    <div className="container">
+                    <div className="card-right">
                         <IconButton aria-label="delete" color="primary" onClick={deleteReview}>
                             <DeleteIcon />
                         </IconButton>
                     </div>
-                    <div className="container">
-                        <Link to={`/new/${review.id}`}>
+                    <div className="card-right">
+                        <Link to={`/edit/${review.id}`}>
                             <IconButton aria-label="delete" color="primary">
                                 <EditIcon />
                             </IconButton>

@@ -125,7 +125,7 @@ const ProductChose:FC = () => {
                                 backgroundRepeat: 'no-repeat'
                             } }/>
                             <div className="product-container__panel" style={ {
-                                backgroundImage: "url(card.png)"
+                                backgroundImage: "url('https://res.cloudinary.com/dighqotqh/image/upload/v1653121754/reccom/card_srkout.png')"
                             } }>
                                 <h2 className="name-to-change">{singleProduct.title}</h2>
                                 <span className="change-product" onClick={()=>setIsModalOpen(prev=>!prev)}>Change title</span>

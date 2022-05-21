@@ -7,7 +7,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import {GearFill} from "react-bootstrap-icons";
 import {styled} from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -21,6 +20,7 @@ import Collapse from '@mui/material/Collapse';
 import TranslateIcon from '@mui/icons-material/Translate';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 interface SettingsProps{
     userPhoto?: string,
@@ -120,7 +120,7 @@ const Settings:FC<SettingsProps> = ({userPhoto, userName, role}) => {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <GearFill color="#ffffff" size={32}/>
+                        <SettingsIcon style={{color: '#ffffff'}} fontSize="large"/>
                     </IconButton>
                 </Tooltip>
             </Box>
