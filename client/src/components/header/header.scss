@@ -1,6 +1,6 @@
 .link{
   text-decoration: none;
-  color: #000000;
+  color: inherit;
 }
 
 .header{
@@ -15,6 +15,7 @@
   padding: 25px 50px 0 50px;
   position: absolute;
   z-index: 100;
+
 
   .logo{
 

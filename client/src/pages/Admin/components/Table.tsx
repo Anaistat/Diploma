@@ -18,9 +18,10 @@ import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { visuallyHidden } from '@mui/utils';
-import {User} from "../../../types";
+import {Review, User} from "../../../types";
 import UserService from "../../../services/UserService";
 import {useSelector} from "react-redux";
+import ReviewService from "../../../services/ReviewService";
 
 interface Data {
     name: string;
@@ -240,13 +241,21 @@ export default function EnhancedTable() {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [users, setUsers] = useState<User[]>([])
     const currentUser:any = useSelector<any>(state=>state.user.user)
+    const [userReviews, setUserReviews] = useState<number[]>([])
+
+    useEffect(()=>{
+        users.map(user=>{
+            ReviewService.getAllUserReviews(user.id).then(res=>setUserReviews(prev=>[...prev, res.length])).catch(console.warn)
+        })
+    }, [users])
+
     useEffect(()=>{
         UserService.getAllUsers(currentUser.uid).then(res=>setUsers(res)).catch(err=>console.warn)
     }, [])
 
     const rows:any[] = [];
-    users.map(user=>{
-        rows.push(createData(`${user.name}`, `${user.role}`, `${user.status}`, 3 , `${new Date(user.registrationDate).toLocaleDateString()}`))
+    users.map((user, index)=>{
+        rows.push(createData(`${user.name}`, `${user.role}`, `${user.status}`, userReviews[index] , `${new Date(user.registrationDate).toLocaleDateString()}`))
     })
 
     const handleRequestSort = (
@@ -307,7 +316,7 @@ export default function EnhancedTable() {
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Paper sx={{ width: '100%', mb: 2 }}>
+            <Paper sx={{ width: '100%', mb: 2 }} elevation={5}>
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <TableContainer>
                     <Table

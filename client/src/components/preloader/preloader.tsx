@@ -3,7 +3,9 @@ import "./preloader.scss"
 
 const Preloader:FC = () => {
     return (
-        <div className="loader">loading</div>
+       <div className="preloader-container">
+           <div className="loader">loading</div>
+       </div>
     );
 };
 

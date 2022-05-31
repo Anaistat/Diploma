@@ -17,7 +17,14 @@ export default class ReviewService{
     }
 
     static async getOneById(id: number): Promise<Review | undefined> {
-        let result = await db.query<DBReview>(`SELECT * FROM reviews WHERE reviews.id = ${id}`)
+        let result = await db.query<DBReview>(`SELECT r.*, COALESCE( l.cnt, 0 ) AS likes
+                            FROM reviews r
+                            LEFT JOIN (
+                            SELECT review_id, count(*) as cnt
+                            FROM likes
+                            GROUP BY review_id
+                            ) l ON r.id = l.review_id
+                            WHERE r.id = ${id}`)
         if (result.rows.length !== 1){
             return undefined
         }
@@ -115,7 +122,6 @@ export default class ReviewService{
             throw DatabaseError.DeleteError(`Cannot find review with ${id} id`)
         }
         const author = await db.query(`SELECT id, role_id FROM users WHERE uid = '${uid}'`)
-        console.log(author.rows)
         if (author.rows.length !== 1) {
             throw DatabaseError.DeleteError(`Unable to remove review, unknown user`)
         }

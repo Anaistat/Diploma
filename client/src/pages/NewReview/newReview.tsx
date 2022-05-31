@@ -1,6 +1,5 @@
-import React, {useState, useRef, useContext, FC, useEffect} from 'react';
+import React, {useState, FC, useEffect} from 'react';
 import "./newReview.scss"
-import "../../App.css"
 import ProductChose from "./components/productChose";
 import Star from "../../components/stars/Star";
 import MDEditor from '@uiw/react-md-editor';
@@ -16,7 +15,7 @@ interface NewReviewProps{
 }
 
 
-const NewReview:FC<NewReviewProps> = (edit) => {
+const NewReview:FC<NewReviewProps> = ({edit}) => {
 
     const {id} = useParams()
     const [reviewId, setReviewId] = useState<number>(0)
@@ -96,7 +95,7 @@ const NewReview:FC<NewReviewProps> = (edit) => {
     }
 
     return (
-        <div className="new-review-container">
+        <Paper className="new-review-container">
             <form className="review-form">
                 <div className="review-form__inputs">
                     <TextField
@@ -142,22 +141,24 @@ const NewReview:FC<NewReviewProps> = (edit) => {
 
                 </div>
                 <ProductChose/>
-                <Paper className="review-text" elevation={2}>
+                <div className="review-text">
                     <MDEditor
                         value={text}
                         onChange={setText}
                         className="review-text__area"
                     />
                     <MDEditor.Markdown/>
-                </Paper>
-                {
-                    edit?
-                        <Button variant="contained" type="button" className='publish-button' onClick={editReview}>Save changes</Button>
-                        :
-                        <Button variant="contained" type="button" className='publish-button' onClick={createReview}>Create review</Button>
-                }
+                </div>
+                <div className="review-publish">
+                    {
+                        edit?
+                            <Button variant="contained" type="button" className='publish-button' onClick={editReview}>Save changes</Button>
+                            :
+                            <Button variant="contained" type="button" className='publish-button' onClick={createReview}>Create review</Button>
+                    }
+                </div>
             </form>
-        </div>
+        </Paper>
     );
 };
 

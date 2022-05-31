@@ -1,3 +1,10 @@
+.preloader-container{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-top: 200px;
+}
+
 .loader,
 .loader:before,
 .loader:after {
@@ -12,7 +19,6 @@
 .loader {
   color: #65abf8;
   font-size: 10px;
-  margin: 80px auto;
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);

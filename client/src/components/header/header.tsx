@@ -57,9 +57,9 @@ const Header = () => {
                     </div>
                 </Link>
 
-            <div className="search">
-                <input type="search" className="search__line" placeholder="search"/>
-            </div>
+            {/*<div className="search">*/}
+            {/*    <input type="search" className="search__line" placeholder="search"/>*/}
+            {/*</div>*/}
                 {
                     authUser && currentUser?
                         <div className="settings-login">

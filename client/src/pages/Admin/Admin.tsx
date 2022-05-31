@@ -4,6 +4,7 @@ import EnhancedTable from "./components/Table";
 import {User} from "../../types";
 import UserService from "../../services/UserService";
 import {useSelector} from "react-redux";
+import {Paper} from "@mui/material";
 
 const Admin = () => {
 
@@ -15,11 +16,11 @@ const Admin = () => {
     }, [])
 
     return (
-        <div className="admin">
+        <Paper className="admin">
             <div className="admin__table">
                 <EnhancedTable/>
             </div>
-        </div>
+        </Paper>
     );
 };
 

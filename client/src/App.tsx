@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import './App.css';
 import Header from "./components/header/header";
 import Introduction from "./pages/Introduction/Introduction";
 import Main from "./pages/Main/Main";
 import Review from "./pages/Review/Review";
-import {Button, createTheme, Switch, ThemeProvider} from "@mui/material";
+import {Button, createTheme, PaletteMode, Switch, ThemeProvider} from "@mui/material";
 import NewReview from "./pages/NewReview/newReview";
 import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
@@ -18,12 +18,23 @@ import AllReviews from "./pages/AllReviews/AllReviews";
 import Preloader from "./components/preloader/preloader";
 
 function App() {
-
     const [authUser, loading, error] = useAuthState(auth)
     const dispatch = useDispatch()
-    localStorage.language?dispatch({type: `${localStorage.language.toUpperCase()}_LANGUAGE`}):dispatch({type: "EN"})
+    localStorage.language ? dispatch({type: `${localStorage.language.toUpperCase()}_LANGUAGE`}):dispatch({type: "EN"})
 
-    const theme = createTheme({
+    const [mode, setMode] = useState<PaletteMode>(localStorage.theme || 'light')
+    const switchMode = useMemo(() => {
+        return {
+            toggleColorMode: () => {
+                setMode(prevState => {
+                    const mode = prevState === 'light' ? 'dark' : 'light'
+                    localStorage.theme = mode
+                    return mode
+                })
+            }
+        }
+    },[])
+    const theme = useMemo(() => createTheme({
         palette: {
             primary: {
                 light: '#f8c633',
@@ -37,14 +48,10 @@ function App() {
                 dark: '#7659ae',
                 contrastText: '#000',
             },
+            mode
         },
-    });
-
-    const darkTheme = createTheme({
-        palette: {
-            mode: 'dark',
-        },
-    });
+    }), [mode])
+    dispatch({type: 'DAY_MODE', payload: switchMode})
 
     useEffect(()=>{
         if(!authUser) return
@@ -58,10 +65,10 @@ function App() {
         })
     }, [authUser])
 
+
   return (
       <ThemeProvider theme={theme}>
         <div className="App">
-
             {
                 loading?
                     <Preloader/>
@@ -76,7 +83,7 @@ function App() {
                             <Route index element={<Introduction/>}/>
                             <Route path="/main" element={<Main/>}/>
                             <Route path="review/:id" element={<Review/>}/>
-                            <Route path="/new" element={<NewReview/>}/>
+                            <Route path="/new" element={<NewReview edit={false}/>}/>
                             <Route path="/profile" element={<Profile/>}/>
                             <Route path="/admin" element={<Admin/>}/>
                             <Route path="/edit/:id" element={<NewReview edit={true}/>}/>
@@ -85,8 +92,6 @@ function App() {
                     </Routes>
                 </>
             }
-
-
         </div>
       </ThemeProvider>
   );

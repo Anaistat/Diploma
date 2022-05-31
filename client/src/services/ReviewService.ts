@@ -26,7 +26,6 @@ export default class ReviewService{
             console.error(error)
             return undefined
         }
-
     }
 
     static async getPopularReviews(): Promise<Review[]>{

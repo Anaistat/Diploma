@@ -86,7 +86,6 @@ const ProductChose:FC = () => {
     }
     function renderRowFilms(props: ListChildComponentProps) {
         const { index, style } = props;
-
         return (
             <ListItem style={style} key={index} component="div" disablePadding>
                 <ListItemButton onClick={()=>dispatch({type: 'CHOSEN_PRODUCT', payload: films[index]})}>

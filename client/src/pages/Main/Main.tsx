@@ -5,16 +5,17 @@ import NewIn from "./components/NewIn";
 import TopRanked from "./components/TopRanked";
 import CreateReview from "./components/CreateReview";
 import Explore from "./components/Explore";
+import {Paper} from "@mui/material";
 
 const Main = () => {
     return (
-        <div className="main">
+        <Paper className="main">
             <TopRanked/>
             <NewIn/>
             <CreateReview/>
             <Explore/>
             <div className="main__footer"/>
-        </div>
+        </Paper>
     );
 };
 

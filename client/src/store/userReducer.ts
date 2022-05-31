@@ -1,11 +1,11 @@
 import {User} from "../types";
 
-interface UserInterfase{
+interface UserInterface{
     user: User | undefined
 }
 
 
-export const userReducer = (state:UserInterfase = {user: undefined}, action:any)=>{
+export const userReducer = (state:UserInterface = {user: undefined}, action:any)=>{
     switch(action.type){
         case "USER":
             return {...state, user: action.payload}

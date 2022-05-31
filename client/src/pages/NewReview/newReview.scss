@@ -1,5 +1,5 @@
 .new-review-container{
-  padding-top: 160px;
+  padding: 160px 0 10px 0;
   display: flex;
   justify-content: center;
   background-image: url("../bg.svg");
@@ -31,11 +31,14 @@
         cursor: pointer;
       }
     }
-
-    .publish-button{
-      padding-bottom: 10px;
-    }
   }
+}
+
+.review-publish{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
 
 .tags-container{
@@ -62,7 +65,12 @@
   height: 200px;
 
   &__area{
-    height: 100%!important;
+    height: 100%;
+    width: 100%;
+    resize: none;
   }
 }
 
+.w-md-editor-toolbar ul{
+  display: flex;
+}
