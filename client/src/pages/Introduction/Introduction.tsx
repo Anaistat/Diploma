@@ -7,12 +7,7 @@ const Introduction = () => {
         <div className="introduction">
             <div className="explore">
                 <h1 className="explore__title">Explore reviews</h1>
-                <p className="explore__text">Lorem Ipsum is simply dummy text of
-                    the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's
-                    standard dummy text ever since the
-                    1500s, when an unknown printer took
-                    a galley of type and scrambled it. </p>
+                <p className="explore__text">We invite you to plunge into the variety of reviews that can help you choose a movie, book or game. I hope you like it and you also want to leave your personal review that can help someone.</p>
                 <Link to="/main"><button className="explore__start">Get started</button></Link>
             </div>
             <div className="introduction__image"></div>

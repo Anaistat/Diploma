@@ -15,13 +15,10 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import { visuallyHidden } from '@mui/utils';
 import {Review, User} from "../../../types";
-import UserService from "../../../services/UserService";
 import {useSelector} from "react-redux";
-import ReviewService from "../../../services/ReviewService";
+import {Link} from "react-router-dom";
 
 interface Data {
     name: string;
@@ -46,6 +43,16 @@ function createData(
         registrationDate,
     };
 }
+
+const rows = [
+    createData('Tanya Zvereva', 'Admin', 'Active', 5, '23/03/2022'),
+    createData('Stanislav Sonder', 'User', 'Active', 0, '23/03/2022'),
+    createData('S.Sonder', 'User', 'Active', 0, '22/03/2022'),
+    createData('Another User', 'User', 'Active', 1, '23/03/2022'),
+    createData('Tanya Zverava', 'User', 'Active', 1, '23/03/2022'),
+    createData('Anton Liparin', 'User', 'Active', 0, '25/03/2022'),
+    createData('Edward Chernjavski', 'User', 'Active', 0, '28/03/2022'),
+]
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -239,24 +246,6 @@ export default function EnhancedTable() {
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    const [users, setUsers] = useState<User[]>([])
-    const currentUser:any = useSelector<any>(state=>state.user.user)
-    const [userReviews, setUserReviews] = useState<number[]>([])
-
-    useEffect(()=>{
-        users.map(user=>{
-            ReviewService.getAllUserReviews(user.id).then(res=>setUserReviews(prev=>[...prev, res.length])).catch(console.warn)
-        })
-    }, [users])
-
-    useEffect(()=>{
-        UserService.getAllUsers(currentUser.uid).then(res=>setUsers(res)).catch(err=>console.warn)
-    }, [])
-
-    const rows:any[] = [];
-    users.map((user, index)=>{
-        rows.push(createData(`${user.name}`, `${user.role}`, `${user.status}`, userReviews[index] , `${new Date(user.registrationDate).toLocaleDateString()}`))
-    })
 
     const handleRequestSort = (
         event: React.MouseEvent<unknown>,
@@ -364,7 +353,7 @@ export default function EnhancedTable() {
                                                 scope="row"
                                                 padding="none"
                                             >
-                                                {row.name}
+                                                <Link to='../profile'>{row.name}</Link>
                                             </TableCell>
                                             <TableCell align="right">{row.role}</TableCell>
                                             <TableCell align="right">{row.status}</TableCell>

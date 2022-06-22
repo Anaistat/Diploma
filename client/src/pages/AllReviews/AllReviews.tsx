@@ -6,6 +6,7 @@ import Card from "../../components/cards/Card";
 import {useParams} from "react-router-dom";
 import Preloader from "../../components/preloader/preloader";
 import {Paper} from "@mui/material";
+import {useSelector} from "react-redux";
 
 
 const AllReviews = () => {
@@ -14,6 +15,18 @@ const AllReviews = () => {
 
     const [reviews, setReviews] = useState<Review[]>([])
     const [loading, setLoading] = useState<boolean>(true)
+    let searchWord:any = useSelector<any>(state=>state.search.word)
+
+    const filteredReviews:Review[] = reviews
+
+        // .filter(rev=>{
+        //     return (rev.title.toLowerCase().includes(searchWord.toLowerCase()) || rev.product.title.toLowerCase().includes(searchWord.toLowerCase()) || rev.tags.forEach(e=>e.includes(searchWord.toLowerCase())))
+        // })
+
+    useEffect(()=>{
+        console.log(searchWord)
+    }, [searchWord])
+
     useEffect(()=>{
        if(loading){
            ReviewService.getPopularReviews().then(res=> {
@@ -33,7 +46,7 @@ const AllReviews = () => {
             <Paper className="all-reviews">
                 <div className='all-reviews__container'>
                     {
-                        reviews.map(e=><Card review={e} className="card-scaled"/>)
+                        filteredReviews.map(e=><Card review={e} className="card-scaled"/>)
                     }
                 </div>
             </Paper>
