@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react';
 import './header.scss'
 import {Link, useNavigate} from "react-router-dom";
 import Settings from "./components/Settings";
@@ -56,10 +55,6 @@ const Header = () => {
                     <h1 className="logo__name">Reccom</h1>
                     </div>
                 </Link>
-
-            <div className="search">
-                <input type="search" className="search__line" placeholder="search" onChange={e=>dispatch({type: 'SEARCH', action: e.target.value })}/>
-            </div>
                 {
                     authUser && currentUser?
                         <div className="settings-login">

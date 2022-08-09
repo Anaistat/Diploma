@@ -96,9 +96,11 @@ const Review = () => {
                 <Comments/>
                 <div className="may-like">
                     <h2 className="may-like__title">You may also like</h2>
-                    {
-                        suggestedReviews.map(e=><Card review={e}/>)
-                    }
+                    <div className="may-like__reviews">
+                        {
+                            suggestedReviews.map(e=><Card review={e}/>)
+                        }
+                    </div>
                 </div>
             </Paper>
         );

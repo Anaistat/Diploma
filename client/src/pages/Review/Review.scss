@@ -87,9 +87,14 @@
   }
 
   .may-like{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    padding: 20px 0;
+
+    &__reviews{
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+      margin: auto;
+    }
 
     &__title{
       width: 70%;

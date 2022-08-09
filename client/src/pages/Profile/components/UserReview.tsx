@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import Stars from "../../../components/stars/Stars";
 import "../../../components/cards/Card.scss"
 import {Button, Card, IconButton} from "@mui/material";

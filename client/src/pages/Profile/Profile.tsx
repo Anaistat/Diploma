@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import "./Profile.scss"
-import Card from "../../components/cards/Card";
 import UserReview from "./components/UserReview";
 import {Button, Paper} from "@mui/material";
 import {useSelector} from "react-redux";

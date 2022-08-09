@@ -32,7 +32,7 @@
   }
 
   .user-reviews{
-    width: 80%;
+    width: 90%;
     margin-top: 30px;
 
     &__title{
@@ -43,7 +43,7 @@
     &__reviews{
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      gap: 70px;
     }
   }
 

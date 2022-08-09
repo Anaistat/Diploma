@@ -114,9 +114,11 @@
     }
 
     &__reviews{
+      margin: auto;
+      width: 90%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      gap: 80px;
       padding-top: 50px;
     }
 
@@ -137,7 +139,7 @@
   }
 
   &__footer{
-    height: 130px;
+    height: 170px;
     width: 100vw;
     background-image: url("../../components/header/header.svg");
     background-size: contain;
